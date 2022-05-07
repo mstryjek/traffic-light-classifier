@@ -1,2 +1,9 @@
 # traffic-light-classifier
-Traffic light classifier CNN based on the LISA lights dataset
+
+
+
+
+LISA:
+https://www.kaggle.com/datasets/mbornoe/lisa-traffic-light-dataset
+CARLA:
+https://www.kaggle.com/datasets/sachsene/carla-traffic-lights-images
