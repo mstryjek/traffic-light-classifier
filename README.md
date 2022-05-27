@@ -1,8 +1,6 @@
 # traffic-light-classifier
 
 
-
-
 LISA:
 https://www.kaggle.com/datasets/mbornoe/lisa-traffic-light-dataset
 CARLA:
