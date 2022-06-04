@@ -5,14 +5,13 @@ import cv2
 def draw_light_class(img: np.ndarray, cid: int) -> np.ndarray:
 	"""Create and publish an image to the debug topic."""
 	colors = { ## Colors are in BGR
-		0: [255, 0,   0],
+		0: [0, 255,   0],
 		1: [0,   0, 255],
 		2: [0, 255, 255],
-		3: [0, 255,   0]
+		3: [255, 0,   0]
 	}
 
-	img = (img * 255).astype(np.uint8)
-	# img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+	img = img.astype(np.uint8)
 
 	color = tuple(colors[cid])
 	## (w, h)
@@ -36,13 +35,15 @@ def draw_light_class(img: np.ndarray, cid: int) -> np.ndarray:
 	img = cv2.rectangle(img, black_start, black_stop, (0,0,0), -1)
 
 	## Draw lights as circles
-	## FIXME Class id 0 os green, 3 is other
-	if cid != 0:
+	if cid != 3:
+		color_circ_idx = cid if cid == 0 else 1 if cid == 2 else 2
 		for i in range(3):
-			clr = color if i == cid-1 else GRAY
+			clr = color if i == color_circ_idx else GRAY
 			circ_center = (int(RECT_SHAPE[0]/2),
-			int(img.shape[0] - RECT_SHAPE[1]/3*(2-i) - RECT_SHAPE[1]/6))
+			int(img.shape[0] - RECT_SHAPE[1]/3*i - RECT_SHAPE[1]/6))
 
 			img = cv2.circle(img, circ_center, LIGHT_RADIUS, clr, -1)
 	else:
 		img = cv2.line(img, (0, img.shape[0]-RECT_SHAPE[1]), (RECT_SHAPE[0], img.shape[0]), (0, 0, 255), 8)
+
+	return img
