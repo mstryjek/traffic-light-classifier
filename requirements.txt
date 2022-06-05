@@ -1,5 +1,6 @@
 tensorflow>=2.8.2
 keras>=2.8.0
+tensorflow_addons
 numpy
 opencv-python
 matplotlib
