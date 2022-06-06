@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+from random import choice, randint, random
+
 def _force_RGB_array(img):
     """
     Ensures image is in the form of a (h, w, 3) array.
